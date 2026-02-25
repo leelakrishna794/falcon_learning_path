@@ -6,9 +6,7 @@ services:
     buildCommand: npm install
     startCommand: npm start
     envVars:
-      - key: PORT
-        value: 3000
       - key: OPENAI_API_KEY
         sync: false
-      - key: DATABASE_URL
+      - key: SQLITE_DB_PATH
         value: ./career_hq.db
