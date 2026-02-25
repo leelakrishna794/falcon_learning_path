@@ -839,17 +839,40 @@ function handleAuth() {
     if (loginForm) {
         loginForm.onsubmit = async (e) => {
             e.preventDefault();
-            const res = await fetch(`${API_BASE}/api/auth/login`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ username: e.target.username.value, password: e.target.password.value })
-            });
-            const data = await res.json();
-            if (data.success) {
-                localStorage.setItem('architect_token', 'AUTHORIZED');
-                window.location.href = 'index.html';
-            } else {
-                alert('FALCON ACCESS DENIED: AUTHENTICATION FAILURE');
+            const submitBtn = loginForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerText;
+
+            try {
+                submitBtn.disabled = true;
+                submitBtn.innerText = 'AUTHORIZING...';
+
+                const res = await fetch(`${API_BASE}/api/auth/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        username: e.target.username.value,
+                        password: e.target.password.value
+                    })
+                });
+
+                if (!res.ok) {
+                    const errorData = await res.json().catch(() => ({}));
+                    throw new Error(errorData.message || `HTTP Error: ${res.status}`);
+                }
+
+                const data = await res.json();
+                if (data.success) {
+                    localStorage.setItem('architect_token', 'AUTHORIZED');
+                    window.location.href = 'index.html';
+                } else {
+                    throw new Error(data.message || 'Authentication failed');
+                }
+            } catch (err) {
+                console.error('Login Error:', err);
+                alert(`FALCON ACCESS DENIED: ${err.message.toUpperCase()}`);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerText = originalBtnText;
             }
         };
     }

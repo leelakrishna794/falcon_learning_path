@@ -46,14 +46,7 @@ db.serialize(() => {
         assessment_score INTEGER DEFAULT 0,
         build_status TEXT DEFAULT 'pending',
         PRIMARY KEY(domain_id, stage_id)
-    )`, () => {
-        // Migration: Add assessment_score if it doesn't exist
-        db.run(`ALTER TABLE missions ADD COLUMN assessment_score INTEGER DEFAULT 0`, (err) => {
-            if (err && !err.message.includes('duplicate column name')) {
-                // Ignore error if column already exists
-            }
-        });
-    });
+    )`);
 
     // Mastered items summary for dashboard
     db.run(`CREATE TABLE IF NOT EXISTS user_stats (
@@ -68,9 +61,12 @@ db.serialize(() => {
 // 1. Auth Mock
 app.post('/api/auth/login', (req, res) => {
     const { username, password } = req.body;
+    console.log(`Login attempt for user: ${username}`);
     if (username === 'architect' && password === 'launch-2026') {
+        console.log('Login successful');
         res.json({ success: true, message: 'Authenticated' });
     } else {
+        console.log('Login failed: Invalid credentials');
         res.status(401).json({ success: false, message: 'Signal Mismatch' });
     }
 });
@@ -193,6 +189,10 @@ app.post('/api/ai/guide', async (req, res) => {
 });
 
 app.get('*', (req, res) => {
+    // Prevent serving index/login HTML for missing static assets
+    if (req.path.includes('.') && !req.path.endsWith('.html')) {
+        return res.status(404).send('Asset not found');
+    }
     res.sendFile(path.join(__dirname, 'login.html'));
 });
 
