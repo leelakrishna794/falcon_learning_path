@@ -62,12 +62,14 @@ db.serialize(() => {
 // 1. Auth Mock
 app.post('/api/auth/login', (req, res) => {
     const { username, password } = req.body;
-    console.log(`Login attempt for user: ${username}`);
+    const timestamp = new Date().toISOString();
+    console.log(`[${timestamp}] Login attempt: User="${username}"`);
+
     if (username === 'architect' && password === 'launch-2026') {
-        console.log('Login successful');
+        console.log(`[${timestamp}] SUCCESS: User authenticated.`);
         res.json({ success: true, message: 'Authenticated' });
     } else {
-        console.log('Login failed: Invalid credentials');
+        console.error(`[${timestamp}] FAILURE: Invalid credentials for "${username}".`);
         res.status(401).json({ success: false, message: 'Signal Mismatch' });
     }
 });
