@@ -20,9 +20,10 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '/')));
 
 // Database Setup
-const db = new sqlite3.Database('./career_hq.db', (err) => {
+const DB_PATH = process.env.DATABASE_URL || './career_hq.db';
+const db = new sqlite3.Database(DB_PATH, (err) => {
     if (err) console.error('Database connection error:', err.message);
-    else console.log('Connected to the FALCON database.');
+    else console.log(`Connected to the FALCON database at ${DB_PATH}`);
 });
 
 // Initialize Tables
