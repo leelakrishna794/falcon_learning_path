@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources | FALCON</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="bg-mesh"></div>
+
+    <nav>
+        <div class="brand orbitron">⚡ FALCON</div>
+        <ul>
+            <li><a href="index.html">DOMAINS</a></li>
+            <li><a href="dashboard.html">DASHBOARD</a></li>
+            <li><a href="roadmap.html">ROADMAP</a></li>
+            <li><a href="resources.html" class="active">RESOURCES</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="profile.html">PROFILE</a></li>
+            <li><a href="#" class="logout-trigger" style="color: var(--alert-red);">LOGOUT</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero"
+        style="padding: 140px 8% 60px; text-align: center; background: white; border-bottom: 2px solid var(--light-blue);">
+        <h1 class="orbitron fade-in" style="font-size: 2.5rem; margin-bottom: 20px;">KNOWLEDGE SIGNAL LIBRARY</h1>
+        <p class="fade-in" style="color: var(--text-muted);">Curated Mastery Assets for: <span
+                id="resource-domain-label" style="color: var(--primary-blue); font-weight: bold;">...</span></p>
+    </header>
+
+    <main style="padding: 80px 8%; max-width: 1100px; margin: 0 auto;">
+        <div id="udemy-resource-list"
+            style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 30px;">
+            <!-- Dynamically populated by app.js -->
+            <p style="text-align: center; grid-column: 1/-1;">Scanning Multi-Source Encryption Frequencies...</p>
+        </div>
+
+        <div class="card scroll-reveal"
+            style="margin-top: 60px; text-align: center; border: 1px dashed var(--primary-blue);">
+            <h4 class="orbitron" style="font-size: 0.9rem; margin-bottom: 15px;">NEED MORE SIGNALS?</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 25px;">Access the full Udemy
+                repository for specialized deeper dives.</p>
+            <a href="https://www.udemy.com" target="_blank" class="btn btn-primary">GO TO UDEMY →</a>
+        </div>
+    </main>
+
+    <!-- AI Guide -->
+    <div id="ai-guide-trigger" class="ai-guide-trigger orbitron" title="AI Career Guide">🤖</div>
+    <div id="chat-panel" class="chat-panel">
+        <div class="chat-header">
+            <span class="orbitron" style="font-size: 0.8rem;">AI CAREER GUIDE</span>
+            <button id="close-chat"
+                style="background:none; border:none; color:white; cursor:pointer; font-size:1.2rem;">×</button>
+        </div>
+        <div id="chat-content" class="chat-content">
+            <div class="chat-bubble bubble-ai">Greetings, Architect. I am your AI Career Guide. How can I assist you in
+                your mission today?</div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chat-user-input" class="chat-chat-input" placeholder="Ask about career paths...">
+            <button id="send-chat" class="btn btn-primary" style="padding: 8px 15px; border-radius: 50px;">→</button>
+        </div>
+    </div>
+
+    <footer style="padding: 60px 8%; text-align: center; color: var(--text-muted); font-size: 0.8rem;">
+        <p>© 2026 FALCON | RESOURCES COMMAND</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

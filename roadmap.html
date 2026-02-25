@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadmap | FALCON</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="bg-mesh"></div>
+
+    <nav>
+        <div class="brand orbitron">⚡ FALCON</div>
+        <ul>
+            <li><a href="index.html">DOMAINS</a></li>
+            <li><a href="dashboard.html">DASHBOARD</a></li>
+            <li><a href="roadmap.html" class="active">ROADMAP</a></li>
+            <li><a href="resources.html">RESOURCES</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="profile.html">PROFILE</a></li>
+            <li><a href="#" class="logout-trigger" style="color: var(--alert-red);">LOGOUT</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero"
+        style="padding: 140px 8% 60px; text-align: center; background: white; border-bottom: 2px solid var(--light-blue);">
+        <h1 class="orbitron fade-in" style="font-size: 2.5rem; margin-bottom: 15px;">MISSION: <span
+                id="active-domain-name" style="color: var(--primary-blue);">...</span></h1>
+        <p class="fade-in" style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 40px;">Professional
+            Skill-Building Progression</p>
+
+        <div class="card fade-in" style="max-width: 900px; margin: 0 auto; padding: 25px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <span class="orbitron" id="progress-status"
+                    style="font-size: 0.8rem; color: var(--primary-blue);">INITIATING MISSION TRACKER...</span>
+                <button id="system-reset" class="orbitron"
+                    style="background: none; border: none; color: var(--alert-red); font-size: 0.65rem; cursor: pointer; text-decoration: underline;">RESET
+                    ALL PROGRESS</button>
+            </div>
+            <div
+                style="width: 100%; height: 10px; background: var(--light-blue); border-radius: 20px; overflow: hidden;">
+                <div id="fuel-bar"
+                    style="width: 0%; height: 100%; background: linear-gradient(90deg, var(--primary-blue), var(--accent-blue)); transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main style="padding: 80px 8%; max-width: 1200px; margin: 0 auto;">
+        <div id="mission-container">
+            <p style="text-align: center;">Loading Domain Missions...</p>
+        </div>
+    </main>
+
+    <!-- AI Guide -->
+    <div id="ai-guide-trigger" class="ai-guide-trigger orbitron" title="AI Career Guide">🤖</div>
+    <div id="chat-panel" class="chat-panel">
+        <div class="chat-header">
+            <span class="orbitron" style="font-size: 0.8rem;">AI CAREER GUIDE</span>
+            <button id="close-chat"
+                style="background:none; border:none; color:white; cursor:pointer; font-size:1.2rem;">×</button>
+        </div>
+        <div id="chat-content" class="chat-content">
+            <div class="chat-bubble bubble-ai">Greetings, Architect. I am your AI Career Guide. How can I assist you in
+                your mission today?</div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chat-user-input" class="chat-chat-input" placeholder="Ask about career paths...">
+            <button id="send-chat" class="btn btn-primary" style="padding: 8px 15px; border-radius: 50px;">→</button>
+        </div>
+    </div>
+
+    <!-- Quiz System -->
+    <div id="quiz-overlay" class="quiz-overlay"></div>
+    <div id="quiz-modal" class="quiz-modal">
+        <div class="quiz-progress">
+            <div id="quiz-progress-fill" class="quiz-progress-fill"></div>
+        </div>
+        <div id="quiz-question-container">
+            <!-- Question content injected by JS -->
+        </div>
+    </div>
+
+    <footer style="padding: 60px 8%; background: white; border-top: 1px solid var(--light-blue); text-align: center;">
+        <p style="font-size: 0.8rem; color: var(--text-muted);">© 2026 FALCON | NEURAL COMMAND CENTER</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

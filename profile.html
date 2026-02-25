@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile | FALCON</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="bg-mesh"></div>
+
+    <nav>
+        <div class="brand orbitron">⚡ FALCON</div>
+        <ul>
+            <li><a href="index.html">DOMAINS</a></li>
+            <li><a href="dashboard.html">DASHBOARD</a></li>
+            <li><a href="roadmap.html">ROADMAP</a></li>
+            <li><a href="resources.html">RESOURCES</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="profile.html" class="active">PROFILE</a></li>
+            <li><a href="#" class="logout-trigger" style="color: var(--alert-red);">LOGOUT</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero" style="padding: 140px 8% 60px; background: white; border-bottom: 2px solid var(--light-blue);">
+        <div
+            style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: center;">
+            <div
+                style="width: 150px; height: 150px; background: var(--primary-blue); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 4rem; color: white; box-shadow: var(--hover-shadow);">
+                👤
+            </div>
+            <div>
+                <h1 class="orbitron" style="font-size: 2.2rem; margin-bottom: 10px;">COMMANDER ARCHITECT</h1>
+                <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 20px;">Senior System Designer |
+                    FALCO-01</p>
+                <div style="display: flex; gap: 20px;">
+                    <div class="badge orbitron"
+                        style="background: var(--light-blue); color: var(--primary-blue); padding: 8px 20px; border-radius: 5px; font-size: 0.8rem;">
+                        RANK: NOVICE</div>
+                    <div class="badge orbitron"
+                        style="background: var(--success-green); color: white; padding: 8px 20px; border-radius: 5px; font-size: 0.8rem;">
+                        TOTAL XP: <span id="profile-xp">0</span></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main style="padding: 80px 8%; max-width: 1200px; margin: 0 auto;">
+
+        <div style="margin-bottom: 100px;">
+            <h2 class="orbitron"
+                style="font-size: 1.5rem; margin-bottom: 40px; border-bottom: 2px solid var(--light-blue); padding-bottom: 15px;">
+                CERTIFICATION VAULT</h2>
+            <div id="certification-grid"
+                style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px;">
+                <!-- Dynamically populated by app.js -->
+                <p id="no-certs-msg"
+                    style="grid-column: 1/-1; text-align: center; padding: 60px; color: var(--text-muted); border: 2px dashed var(--light-blue); border-radius: 20px;">
+                    Scanning for earned credentials... Complete 100% of a career mission to receive your professional
+                    certification.
+                </p>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+            <div class="card">
+                <h3 class="orbitron" style="font-size: 1rem; margin-bottom: 25px;">SYSTEM INFO</h3>
+                <div style="display: flex; flex-direction: column; gap: 15px; font-size: 0.9rem;">
+                    <div
+                        style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--light-blue); padding-bottom: 10px;">
+                        <span style="font-weight: bold;">User ID:</span>
+                        <span style="color: var(--text-muted);">CC-2026-X01</span>
+                    </div>
+                    <div
+                        style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--light-blue); padding-bottom: 10px;">
+                        <span style="font-weight: bold;">Auth Status:</span>
+                        <span style="color: var(--success-green); font-weight: bold;">AUTHORIZED</span>
+                    </div>
+                    <div
+                        style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--light-blue); padding-bottom: 10px;">
+                        <span style="font-weight: bold;">Neural Signal:</span>
+                        <span style="color: var(--primary-blue);">ENCRYPTED</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span style="font-weight: bold;">Last Login:</span>
+                        <span style="color: var(--text-muted); font-size: 0.8rem;">2026-02-25 13:00</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="background: var(--navy-blue); color: white;">
+                <h3 class="orbitron" style="font-size: 1rem; margin-bottom: 25px; color: white;">FALCON MISSION LOG</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 20px; opacity: 0.8;">Stay consistent, Commander. Your next
+                    rank expansion is calculated at 2500 XP.</p>
+                <div
+                    style="height: 10px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden; margin-bottom: 30px;">
+                    <div style="width: 15%; height: 100%; background: white;"></div>
+                </div>
+                <button onclick="window.location.href='roadmap.html'" class="btn"
+                    style="background: white; color: var(--navy-blue); width: 100%; justify-content: center;">CONTINUE
+                    MISSION →</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- AI Guide -->
+    <div id="ai-guide-trigger" class="ai-guide-trigger orbitron" title="AI Career Guide">🤖</div>
+    <div id="chat-panel" class="chat-panel">
+        <div class="chat-header">
+            <span class="orbitron" style="font-size: 0.8rem;">AI CAREER GUIDE</span>
+            <button id="close-chat"
+                style="background:none; border:none; color:white; cursor:pointer; font-size:1.2rem;">×</button>
+        </div>
+        <div id="chat-content" class="chat-content">
+            <div class="chat-bubble bubble-ai">Greetings, Commander. Accessing your profile logs. How can I assist you
+                today?</div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chat-user-input" class="chat-chat-input" placeholder="Ask about career paths...">
+            <button id="send-chat" class="btn btn-primary" style="padding: 8px 15px; border-radius: 50px;">→</button>
+        </div>
+    </div>
+
+    <footer
+        style="padding: 60px 8%; text-align: center; color: var(--text-muted); font-size: 0.8rem; background: white; border-top: 1px solid var(--light-blue);">
+        <p>© 2026 FALCON | COMMAND CENTER IDENTITY</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

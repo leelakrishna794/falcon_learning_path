@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | FALCON</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="bg-mesh"></div>
+
+    <nav>
+        <div class="brand orbitron">⚡ FALCON</div>
+        <ul>
+            <li><a href="index.html">DOMAINS</a></li>
+            <li><a href="dashboard.html" class="active">DASHBOARD</a></li>
+            <li><a href="roadmap.html">ROADMAP</a></li>
+            <li><a href="resources.html">RESOURCES</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="profile.html">PROFILE</a></li>
+            <li><a href="#" class="logout-trigger" style="color: var(--alert-red);">LOGOUT</a></li>
+        </ul>
+    </nav>
+
+    <header
+        style="padding: 140px 8% 60px; text-align: center; background: white; border-bottom: 2px solid var(--light-blue);">
+        <h1 class="orbitron fade-in" style="font-size: 2.5rem; margin-bottom: 10px;">MISSION CONTROL</h1>
+        <p class="fade-in" style="color: var(--text-muted);">Overall Career Deployment Status</p>
+    </header>
+
+    <main style="padding: 60px 8%; max-width: 1200px; margin: 0 auto;">
+
+        <!-- Global Stats -->
+        <div id="dashboard-stats"
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 60px;">
+            <div class="card" style="text-align: center; border-top: 4px solid var(--primary-blue);">
+                <p class="orbitron" style="font-size: 0.7rem; opacity: 0.6;">DASHBOARD LOADING...</p>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 2fr 1.2fr; gap: 40px;">
+            <!-- Career Path Summary -->
+            <div class="card scroll-reveal">
+                <h3 class="orbitron"
+                    style="font-size: 1rem; margin-bottom: 30px; border-bottom: 1px solid var(--light-blue); padding-bottom: 15px;">
+                    DEPLOYED PATHS</h3>
+                <div id="active-paths-list" style="display: flex; flex-direction: column; gap: 20px;">
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">Launch a domain from the <a
+                            href="index.html" style="color: var(--primary-blue); text-decoration: underline;">Domains
+                            Hub</a> to see progress here.</p>
+                </div>
+            </div>
+
+            <!-- Profile Summary -->
+            <div class="card scroll-reveal" style="background: var(--light-blue); border-color: var(--primary-blue);">
+                <div style="text-align: center;">
+                    <div
+                        style="width: 80px; height: 80px; background: var(--primary-blue); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 20px;">
+                        👤</div>
+                    <h4 class="orbitron" style="font-size: 1rem; margin-bottom: 5px;">COMMANDER ARCHITECT</h4>
+                    <p style="font-size: 0.75rem; color: var(--text-muted); font-weight: bold;">RANK: NOVICE SYSTEM
+                        DESIGNER</p>
+
+                    <div style="margin-top: 30px; text-align: left;">
+                        <h5 class="orbitron" style="font-size: 0.65rem; margin-bottom: 10px; opacity: 0.6;">SYSTEM LOGS
+                        </h5>
+                        <ul
+                            style="font-size: 0.8rem; list-style: none; display: flex; flex-direction: column; gap: 10px;">
+                            <li>✅ Authorization Successful</li>
+                            <li>✅ Neural Link Established</li>
+                            <li>⏳ Waiting for Mission Launch...</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- AI Guide -->
+    <div id="ai-guide-trigger" class="ai-guide-trigger orbitron" title="AI Career Guide">🤖</div>
+    <div id="chat-panel" class="chat-panel">
+        <div class="chat-header">
+            <span class="orbitron" style="font-size: 0.8rem;">AI CAREER GUIDE</span>
+            <button id="close-chat"
+                style="background:none; border:none; color:white; cursor:pointer; font-size:1.2rem;">×</button>
+        </div>
+        <div id="chat-content" class="chat-content">
+            <div class="chat-bubble bubble-ai">Greetings, Architect. I am your AI Career Guide. How can I assist you in
+                your mission today?</div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chat-user-input" class="chat-chat-input" placeholder="Ask about career paths...">
+            <button id="send-chat" class="btn btn-primary" style="padding: 8px 15px; border-radius: 50px;">→</button>
+        </div>
+    </div>
+
+    <footer style="padding: 60px 8%; text-align: center; color: var(--text-muted); font-size: 0.8rem;">
+        <p>© 2026 FALCON | AI WORKFLOW ARCHITECT</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

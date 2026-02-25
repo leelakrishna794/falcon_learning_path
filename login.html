@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authorize | FALCON</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body style="display: flex; justify-content: center; align-items: center; background: var(--light-blue);">
+
+    <div class="bg-mesh"></div>
+
+    <main class="card fade-in" style="width: 100%; max-width: 420px; padding: 50px;">
+        <div style="text-align: center; margin-bottom: 40px;">
+            <div class="brand" style="justify-content: center; margin-bottom: 20px;">
+                <span style="font-size: 2rem;">⚡</span>
+                <span class="orbitron" style="font-size: 1.5rem; letter-spacing: 2px;">FALCON</span>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 600;">PROFESSIONAL CERTIFICATION PORTAL
+            </p>
+        </div>
+
+        <form id="login-form">
+            <div style="margin-bottom: 25px;">
+                <label class="orbitron"
+                    style="font-size: 0.7rem; display: block; margin-bottom: 8px; color: var(--text-muted);">COMMANDER
+                    ID</label>
+                <input type="text" name="username" placeholder="architect" required
+                    style="width: 100%; padding: 14px; border: 2px solid var(--light-blue); border-radius: 8px; font-family: 'Exo 2'; outline: none; transition: 0.3s;"
+                    onfocus="this.style.borderColor='var(--primary-blue)'"
+                    onblur="this.style.borderColor='var(--light-blue)'">
+            </div>
+            <div style="margin-bottom: 35px;">
+                <label class="orbitron"
+                    style="font-size: 0.7rem; display: block; margin-bottom: 8px; color: var(--text-muted);">SECURITY
+                    KEY</label>
+                <input type="password" name="password" placeholder="••••••••" required
+                    style="width: 100%; padding: 14px; border: 2px solid var(--light-blue); border-radius: 8px; font-family: 'Exo 2'; outline: none; transition: 0.3s;"
+                    onfocus="this.style.borderColor='var(--primary-blue)'"
+                    onblur="this.style.borderColor='var(--light-blue)'">
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">AUTHORIZE SIGNAL
+                →</button>
+        </form>
+
+        <div
+            style="margin-top: 30px; text-align: center; font-size: 0.75rem; color: var(--text-muted); border-top: 1px solid var(--light-blue); padding-top: 20px;">
+            <p>MOCK FREQUENCY: <span style="color: var(--primary-blue); font-weight: bold;">architect /
+                    launch-2026</span></p>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FALCON | Career Command Center</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #domain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 40px 0;
+        }
+
+        .domain-card {
+            cursor: pointer;
+            text-align: center;
+            padding: 40px 30px;
+            transition: var(--transition-smooth);
+            border-bottom: 4px solid var(--light-blue);
+        }
+
+        .domain-card:hover {
+            border-bottom-color: var(--primary-blue);
+            transform: translateY(-8px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg-mesh"></div>
+
+    <nav>
+        <div class="brand orbitron">⚡ FALCON</div>
+        <ul>
+            <li><a href="index.html" class="active">DOMAINS</a></li>
+            <li><a href="dashboard.html">DASHBOARD</a></li>
+            <li><a href="roadmap.html">ROADMAP</a></li>
+            <li><a href="resources.html">RESOURCES</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="profile.html">PROFILE</a></li>
+            <li><a href="#" class="logout-trigger" style="color: var(--alert-red);">LOGOUT</a></li>
+        </ul>
+    </nav>
+
+    <header
+        style="padding: 140px 8% 60px; text-align: center; background: white; border-bottom: 2px solid var(--light-blue);">
+        <div class="badge orbitron"
+            style="background: var(--light-blue); color: var(--primary-blue); padding: 6px 16px; border-radius: 50px; font-size: 0.7rem; width: fit-content; margin: 0 auto 20px;">
+            CHOOSE YOUR DEPLOYMENT PATH</div>
+        <h1 class="orbitron fade-in" style="font-size: 2.8rem; line-height: 1.2; margin-bottom: 20px;">
+            SELECT YOUR <span style="color: var(--primary-blue);">CAREER DOMAIN.</span>
+        </h1>
+        <p class="fade-in" style="color: var(--text-muted); font-size: 1.1rem; max-width: 700px; margin: 0 auto;">
+            Launch a specialized, high-fidelity learning mission tailored to your professional goals. Each path includes
+            curated missions and certifications.
+        </p>
+    </header>
+
+    <main style="padding: 60px 8%;">
+        <div class="search-container fade-in">
+            <input type="text" id="domain-search" class="search-input"
+                placeholder="Search domains (e.g. 'AI', 'Cloud', 'Frontend')...">
+        </div>
+
+        <div id="domain-grid">
+            <!-- Dynamically populated by app.js -->
+            <p style="text-align: center; grid-column: 1/-1;">Locating Signal Frequencies...</p>
+        </div>
+    </main>
+
+    <!-- AI Guide -->
+    <div id="ai-guide-trigger" class="ai-guide-trigger orbitron" title="AI Career Guide">
+        🤖
+    </div>
+
+    <div id="chat-panel" class="chat-panel">
+        <div class="chat-header">
+            <span class="orbitron" style="font-size: 0.8rem;">AI CAREER GUIDE</span>
+            <button id="close-chat"
+                style="background:none; border:none; color:white; cursor:pointer; font-size:1.2rem;">×</button>
+        </div>
+        <div id="chat-content" class="chat-content">
+            <div class="chat-bubble bubble-ai">
+                Greetings, Architect. I am your AI Career Guide. Tell me about your skills or interests, and I'll
+                suggest the optimal deployment path for you.
+            </div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chat-user-input" class="chat-chat-input" placeholder="Ask about career paths...">
+            <button id="send-chat" class="btn btn-primary" style="padding: 8px 15px; border-radius: 50px;">→</button>
+        </div>
+    </div>
+
+    <footer style="padding: 60px 8%; background: white; border-top: 1px solid var(--light-blue); text-align: center;">
+        <p style="font-size: 0.8rem; color: var(--text-muted);">© 2026 FALCON | AI WORKFLOW ARCHITECT</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
