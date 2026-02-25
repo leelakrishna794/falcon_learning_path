@@ -9,9 +9,10 @@ const OpenAI = require('openai');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// OpenAI Configuration
+// OpenAI Configuration (Configured for OpenRouter)
 const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY || 'MISSING_KEY'
+    apiKey: process.env.OPENAI_API_KEY || 'MISSING_KEY',
+    baseURL: "https://openrouter.ai/api/v1"
 });
 
 // Middleware
@@ -63,14 +64,26 @@ db.serialize(() => {
 app.post('/api/auth/login', (req, res) => {
     const { username, password } = req.body;
     const timestamp = new Date().toISOString();
-    console.log(`[${timestamp}] Login attempt: User="${username}"`);
 
-    if (username === 'architect' && password === 'launch-2026') {
-        console.log(`[${timestamp}] SUCCESS: User authenticated.`);
+    // Normalize inputs to prevent case sensitivity or whitespace issues
+    const normalizedUser = (username || '').toLowerCase().trim();
+    const normalizedPass = (password || '').trim();
+
+    console.log(`[${timestamp}] AUTH_REQUEST: User="${normalizedUser}"`);
+    // Note: Logging length for debugging without exposing full password
+    if (normalizedPass) {
+        console.log(`[${timestamp}] PASS_DEBUG: Length=${normalizedPass.length}`);
+    }
+
+    if (normalizedUser === 'architect' && normalizedPass === 'launch-2026') {
+        console.log(`[${timestamp}] AUTH_SUCCESS: User authenticated.`);
         res.json({ success: true, message: 'Authenticated' });
     } else {
-        console.error(`[${timestamp}] FAILURE: Invalid credentials for "${username}".`);
-        res.status(401).json({ success: false, message: 'Signal Mismatch' });
+        console.warn(`[${timestamp}] AUTH_FAILURE: Signal Mismatch for "${normalizedUser}".`);
+        res.status(401).json({
+            success: false,
+            message: `Signal Mismatch: Credential validation failed. (User: ${normalizedUser})`
+        });
     }
 });
 
@@ -142,8 +155,9 @@ app.post('/api/system/reset', (req, res) => {
     db.serialize(() => {
         db.run("DELETE FROM progress");
         db.run("DELETE FROM missions");
+        db.run("DELETE FROM user_stats");
     });
-    res.json({ success: true });
+    res.json({ success: true, message: 'Neural signals wiped. Database reset.' });
 });
 
 // 8. AI Career Guide Interface (ChatGPT Integration)
@@ -164,11 +178,11 @@ app.post('/api/ai/guide', async (req, res) => {
     else if (msg.includes('mobile') || msg.includes('app')) fallbackSuggestion = 'mobile-dev';
     else if (msg.includes('devops') || msg.includes('docker')) fallbackSuggestion = 'devops-eng';
 
-    // 2. ChatGPT Logic
-    if (process.env.OPENAI_API_KEY && process.env.OPENAI_API_KEY !== 'your_actual_key_here') {
+    // 2. ChatGPT Logic (via OpenRouter)
+    if (process.env.OPENAI_API_KEY && process.env.OPENAI_API_KEY !== 'MISSING_KEY') {
         try {
             const completion = await openai.chat.completions.create({
-                model: "gpt-3.5-turbo",
+                model: "openai/gpt-3.5-turbo", // OpenRouter model name
                 messages: [
                     { role: "system", content: "You are the FALCON AI Career Guide. Analyze the user's skills and interests. Recommend exactly ONE of these domain IDs: software-dev, web-dev, mobile-dev, cyber-analyst, cloud-eng, devops-eng, data-analyst, data-scientist, business-analyst, ai-engineer, ml-engineer. Return a JSON object: { \"response\": \"your professional advice here\", \"suggestion\": \"domain-id\" }." },
                     { role: "user", content: message }
@@ -179,7 +193,7 @@ app.post('/api/ai/guide', async (req, res) => {
             const result = JSON.parse(completion.choices[0].message.content);
             return res.json(result);
         } catch (err) {
-            console.error("ChatGPT API Error:", err.message);
+            console.error("OpenRouter API Error:", err.message);
             // On error, proceed to fallback
         }
     }

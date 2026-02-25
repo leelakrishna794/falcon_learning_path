@@ -1,0 +1,24 @@
+{
+  "./career_hq.db": {
+    "progress": [],
+    "missions": []
+  },
+  "./architect.db": {
+    "progress": [
+      {
+        "id": 1,
+        "stage_id": 2,
+        "outcome_id": 1,
+        "status": 1
+      }
+    ],
+    "missions": [
+      {
+        "stage_id": 6,
+        "activity_status": null,
+        "assessment_status": "completed",
+        "build_status": null
+      }
+    ]
+  }
+}

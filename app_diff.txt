@@ -1,0 +1,20 @@
+﻿diff --git a/app.js b/app.js
+index 486499f..6f2e45a 100644
+--- a/app.js
++++ b/app.js
+@@ -861,10 +861,15 @@ function handleAuth() {
+                 }
+ 
+                 const data = await res.json();
++                console.log('Login Response Data:', data);
++
+                 if (data.success) {
++                    console.log('Login Success - Setting Token');
+                     localStorage.setItem('architect_token', 'AUTHORIZED');
++                    alert('ACCESS GRANTED: WELCOME COMMANDER');
+                     window.location.href = 'index.html';
+                 } else {
++                    console.warn('Login Failed - Message:', data.message);
+                     throw new Error(data.message || 'Authentication failed');
+                 }
+             } catch (err) {
